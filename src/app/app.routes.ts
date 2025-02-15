@@ -6,7 +6,7 @@ import { UsuarioCardComponent } from './components/usuario-card/usuario-card.com
 import { UsuariosService } from './services/usuarios.service';
 
 export const routes: Routes = [
-    {path:"", pathMatch: "full", redirectTo: "usuarios"},
+    {path:"", pathMatch: "full", redirectTo: "home"},
     {path:"home", component: UsuariosListComponent},
     {path:"newUser", component: UsuariosFormComponent},
     {path:"update/user/:_id", component: UsuariosFormComponent},
