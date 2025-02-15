@@ -27,7 +27,7 @@ export class UsuariosFormComponent {
     this.usuariosForm = new FormGroup({
       first_name: new FormControl('', [Validators.required]),
       last_name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]),
+      email: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required])
     }, 
       []);
@@ -42,8 +42,14 @@ export class UsuariosFormComponent {
         this.tipo = "Actualizar";
         
         this.usuariosServices.getByIdWithObservable(_id).subscribe({
-          next: (usuario: Usuario) => {
-            this.miUsuario = usuario;
+          next: (usuarioResponse: Usuario) => {
+            this.usuariosForm = new FormGroup({
+              _id: new FormControl(usuarioResponse._id, []),
+              first_name: new FormControl(usuarioResponse.first_name, [Validators.required]),
+              last_name: new FormControl(usuarioResponse.last_name, [Validators.required]),
+              email: new FormControl(usuarioResponse.email, [Validators.required]),
+              image: new FormControl(usuarioResponse.image, [Validators.required])
+            });
           },
           error: (err) => {
             console.error('Error al obtener el usuario:', err);
@@ -52,6 +58,7 @@ export class UsuariosFormComponent {
       }
     });
   }
+  
 
 
   getDataForm() {
