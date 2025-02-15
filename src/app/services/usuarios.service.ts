@@ -15,5 +15,9 @@ export class UsuariosService {
 
   getAllWithObservables() : Observable<Usuario[]>{
     return this.httpClient.get<Usuario[]>(this.baseUrl);
-    }
+  }
+
+  getByIdWithObservable(_id: string): Observable<Usuario>{
+    return this.httpClient.get<Usuario>(`${this.baseUrl}/${_id}`);
+  }
 }
