@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Usuario } from '../../interfaces/usuario';
 
 @Component({
   selector: 'app-usuario-card',
@@ -9,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class UsuarioCardComponent {
 
-}
+  @Input() miUsuario!: Usuario;
+
+} 
