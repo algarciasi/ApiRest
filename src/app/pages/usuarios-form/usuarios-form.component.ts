@@ -59,8 +59,39 @@ export class UsuariosFormComponent {
     });
   }
   
-  getDataForm() {
+  getDataForm(): void {
+    if (this.usuariosForm.invalid) {
+      alert('Por favor, complete todos los campos correctamente.');
+      return;
+    }
 
+    let usuario: Usuario = this.usuariosForm.value;
+
+    if (usuario._id) {
+      // Si existe `_id`, actualiza el usuario
+      this.usuariosServices.update(usuario).subscribe({
+        next: (response: Usuario) => {
+          alert('Usuario actualizado correctamente: ' + response.first_name);
+          this.router.navigate(['/home']); // Redirigir tras actualizar
+        },
+        error: (err) => {
+          console.error('Error al actualizar el usuario:', err);
+          alert('Hubo un error al intentar actualizar el usuario.');
+        }
+      });
+    } else {
+      // Si no tiene `_id`, crea un nuevo usuario
+      this.usuariosServices.insert(usuario).subscribe({
+        next: (response: Usuario) => {
+          alert('Usuario creado correctamente: ' + response.first_name);
+          this.router.navigate(['/home']); // Redirigir tras creación
+        },
+        error: (err) => {
+          console.error('Error al crear el usuario:', err);
+          alert('Hubo un error al intentar crear el usuario.');
+        }
+      });
+    }
   }
   
 

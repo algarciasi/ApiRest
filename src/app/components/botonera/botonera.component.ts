@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../interfaces/usuario';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-botonera',
@@ -18,6 +19,7 @@ export class BotoneraComponent {
 
   @Input() _id : string;
   @Input() parent : string;
+  @Input() usuariosForm!: FormGroup;
 
   constructor(){
     this._id = "";
@@ -48,7 +50,41 @@ export class BotoneraComponent {
       });
     }
   }
+
+
+  /* saveUser(): void {
+    if (!this.usuariosForm || this.usuariosForm.invalid) {
+      alert('Por favor, complete todos los campos correctamente.');
+      return;
+    }
   
+    let usuario: Usuario = this.usuariosForm.value;
 
-
+    if (this._id) {
+      // Actualizar usuario
+      this.usuariosService.update(usuario).subscribe({
+        next: (response: Usuario) => {
+          alert('Usuario actualizado correctamente: ' + response.first_name);
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          console.error('Error al actualizar el usuario:', err);
+          alert('Hubo un error al intentar actualizar el usuario.');
+        }
+      });
+    } else {
+      // Crear nuevo usuario
+      this.usuariosService.insert(usuario).subscribe({
+        next: (response: Usuario) => {
+          alert('Usuario creado correctamente: ' + response.first_name);
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          console.error('Error al crear el usuario:', err);
+          alert('Hubo un error al intentar crear el usuario.');
+        }
+      });
+    }
+  }*/
+  
 }
