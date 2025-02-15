@@ -10,6 +10,7 @@ export class UsuariosService {
 
   httpClient = inject(HttpClient);
   private baseUrl : string = 'https://peticiones.online/api/users';
+  insertObservable: any;
 
   constructor() { }
 
