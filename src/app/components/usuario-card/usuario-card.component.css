@@ -1,0 +1,23 @@
+.user-image {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: 100px; /* Altura fija para uniformidad */
+    object-fit: cover; /* Evita distorsión y recorta la imagen */
+    border-radius: 8px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.botonera {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}

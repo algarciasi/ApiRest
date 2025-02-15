@@ -1,9 +1,19 @@
 <div class="d-flex gap-2">
     @if(parent == 'card'){
-    <a [routerLink]="['/user', _id]" class="btn btn-secondary"> Ver detalle</a>
-    }@else if(parent == 'view'){
-    <a [routerLink]="['/home']" class="btn btn-secondary"> Volver al listado</a>
+        <a [routerLink]="['/user', _id]" class="btn btn-outline-secondary btn-sm" title="Ver detalle">
+            <i class="bi bi-search"></i>
+        </a>
+    } @else if(parent == 'view'){
+        <a [routerLink]="['/home']" class="btn btn-outline-secondary btn-sm" title="Volver al listado">
+            <i class="bi bi-arrow-left"></i>
+        </a>
     }
-    <a [routerLink]="['/update','user', _id]" class="btn btn-warning">Actualizar</a>
-    <button class="btn btn-danger" (click)="deleteUser(_id)">Borrar</button>
+    
+    <a [routerLink]="['/update','user', _id]" class="btn btn-outline-warning btn-sm" title="Actualizar">
+        <i class="bi bi-arrow-clockwise"></i>
+    </a>
+    
+    <button class="btn btn-outline-danger btn-sm" (click)="deleteUser(_id)" title="Borrar">
+        <i class="bi bi-trash"></i>
+    </button>
 </div>
