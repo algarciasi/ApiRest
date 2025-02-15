@@ -23,8 +23,8 @@ export class UsuariosViewComponent {
       let _id: string = params._id as string;
   
       this.usuariosService.getByIdWithObservable(_id).subscribe({
-        next: (serie) => {
-          this.miUsuario = serie;
+        next: (usuario) => {
+          this.miUsuario = usuario;
         },
         error: (err) => {
           console.error('Error al llamar a la API:', err);
