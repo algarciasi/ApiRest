@@ -4,6 +4,6 @@
     }@else if(parent == 'view'){
     <a [routerLink]="['/home']" class="btn btn-secondary"> Volver al listado</a>
     }
-    <a [routerLink]="['/updateUser','serie', _id]" class="btn btn-warning">Actualizar</a>
+    <a [routerLink]="['/update','user', _id]" class="btn btn-warning">Actualizar</a>
     <button class="btn btn-danger" (click)="deleteUser(_id)">Borrar</button>
 </div>
